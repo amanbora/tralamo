@@ -1,0 +1,39 @@
+[
+    {
+      "name": "Bangkok",
+      "attraction": [
+        "Grand Palace",
+        "Erawan Shrine",
+        "Chao Praya",
+        "Wat Arun"
+    ]
+  },
+
+  {
+    "name":"Shanghai",
+    "attraction":[
+      "Oriental Pearl Radio and Television Tower",
+      "Shanghai Science and Technology Museum",
+      "The Bund",
+      "Madame Tussauds Shanghai"
+    ]
+  },
+  {
+    "name":"Hong Kong",
+    "attraction":[
+      "Ocean park Hong Kong",
+      "Victoria Peak",
+      "Hong Kong Disneyland",
+      "Tsim Sha Tsui"
+    ]
+  },
+  {
+    "name":"Singapore",
+    "attraction": [
+      "Gardens by the Bay",
+      "Chinatown Singapore",
+      "Mount Faber Cable Car",
+      "National Museum of Singapore"
+      ]
+    }
+]
