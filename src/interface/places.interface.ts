@@ -1,4 +1,4 @@
 export interface Places {
   name: string;
-  attraction: [string];
+  attraction:Array<string>;
 }

@@ -39,16 +39,35 @@
 <!--</div>-->
 
 
-<div style="width: 300px; margin-bottom: 20px;">
-  <h3>Select a single city</h3>
-  <ng-select [allowClear]="true"
-             [items]="placeNames"
-             (data)="refreshValue($event)"
-             (selected)="selected($event)"
-             (removed)="removed($event)"
-             (typed)="typed($event)"
-             placeholder="No city selected">
-  </ng-select>
-  <p></p>
-  <pre>{{value}}</pre>
-</div>
+<ngx-select
+  [allowClear]="true"
+  [items]="names"
+  (select) = "selectedPlace($event)"
+  optionValueField="optionId"
+  optionTextField="optionTitle"
+  placeholder="Select...">
+</ngx-select>
+
+
+<ngx-select
+  *ngIf="showAttractionList"
+  [allowClear]="true"
+  [items]="attractions"
+  (select) = "selectedAttraction($event)"
+  optionValueField="optionId"
+  optionTextField="optionTitle"
+  placeholder="Select...">
+</ngx-select>
+
+
+
+<ngx-select
+  *ngIf="showEmailList"
+  [multiple]="true"
+  [allowClear]="true"
+  [items]="emailList"
+  (select) = "selectedEmails($event)"
+  optionValueField="optionId"
+  optionTextField="optionTitle"
+  placeholder="Select...">
+</ngx-select>
