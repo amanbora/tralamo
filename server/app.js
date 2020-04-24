@@ -8,7 +8,7 @@ var placesList = require('./storage/places.json');
 var emailList = require('./storage/email.json');
 const FROM = 'bora.amanalambora@gmail.com'
 
-var sendEmail = function(template, to){
+var sendEmail = function(templateNo, to){
   const email = new EMAIL({
     message: {
       from: FROM
@@ -22,12 +22,12 @@ var sendEmail = function(template, to){
 
   email
     .send({
-      template: template,
+      template: 'template'+templateNo,
       message: {
         to: to
       },
       locals: {
-        name: 'Elon'
+        name: 'All'
       }
     })
     .then(console.log)
