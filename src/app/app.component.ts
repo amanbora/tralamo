@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormControl, FormGroup } from '@angular/forms';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Places } from '../interface/places.interface';
 
-const placesURL = 'http://localhost:8080/getPlacesList';
-const emailURL = 'http://localhost:8080/getEmailList';
+import { Constants} from '../constants';
+
 
 @Component({
   selector: 'app-root',
@@ -17,12 +16,17 @@ export class AppComponent implements OnInit{
   emailList: any;
   showAttractionList = false;
   showEmailList = false;
+  showTemp = false;
+  sendActivated = false;
+
   public names:Array<string>=[];
   public attractions:Array<string>=[];
+  public templates = Constants.EMAIL_TEMPLATES;
 
   private selectPlace = '';
   private selectAttraction = '';
   private selectEmails:Array<string>=[];
+  private selectTemplate = '';
 
 
   public selectedPlace(value:any):void {
@@ -45,6 +49,13 @@ export class AppComponent implements OnInit{
     this.showEmailTemplates(value);
   }
 
+  public onSelectTemplate(value):void {
+    this.selectTemplate = value;
+    this.sendActivated = true;
+    console.log(this.selectTemplate);
+  }
+
+
 
 
 
@@ -53,7 +64,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     // @ts-ignore
-    this.http.get<Places[]>(placesURL)._subscribe((data) => {
+    this.http.get<Places[]>(Constants.PLACES_URL)._subscribe((data) => {
         console.log(data);
         this.places = data.body;
         this.names = this.places.map(data => data.name);
@@ -61,10 +72,12 @@ export class AppComponent implements OnInit{
 
     });
 
-    this.http.get(emailURL)._subscribe((data) => {
+    // @ts-ignore
+    this.http.get(Constants.GET_EMAIL_URL)._subscribe((data) => {
       this.emailList = data.body["recipientList"];
       console.log(this.emailList);
     })
+
   }
 
   showAttractions(value): void{
@@ -84,7 +97,19 @@ export class AppComponent implements OnInit{
   }
 
   showEmailTemplates(value): void{
+    this.showTemp = true;
+  }
 
+  sendEmail(){
+    const data = {'template':this.selectTemplate};
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    })
+    this.http.post<any>(Constants.SEND_EMAIL_URL,data,{headers:headers}).subscribe((response)=>{
+      console.log('Sending Mail');
+      if(response.sent)console.log('Mail Successfully Sent');
+      else console.log('Mail Unsuccessful');
+    });
   }
 }
 
