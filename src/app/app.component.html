@@ -74,7 +74,10 @@
 
 <div class="templates" *ngIf="showTemp">
   <ul>
-    <li *ngFor="let temp of templates ; index as i" (click)="onSelectTemplate(temp)">{{i}} {{temp}}</li>
+    <li *ngFor="let temp of templates ; index as i" (click)="onSelectTemplate(temp)">
+      <span>{{i}}</span>
+      {{temp}}
+    </li>
   </ul>
 </div>
 

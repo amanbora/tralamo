@@ -38,15 +38,13 @@ export class AppComponent implements OnInit{
   public selectedAttraction(value:any):void {
     this.selectAttraction = value;
     console.log('Selected Attraction value is: ', value);
-
     this.selectRecepients();
-    this.showEmailTemplates(value);
   }
 
   public selectedEmails(value:any):void {
     this.selectEmails.push(value);
+    this.showEmailTemplates();
     console.log(this.selectEmails);
-    this.showEmailTemplates(value);
   }
 
   public onSelectTemplate(value):void {
@@ -96,12 +94,12 @@ export class AppComponent implements OnInit{
     this.showEmailList = true;
   }
 
-  showEmailTemplates(value): void{
+  showEmailTemplates(): void{
     this.showTemp = true;
   }
 
   sendEmail(){
-    const data = {'template':this.selectTemplate};
+    const data = {'template':this.selectTemplate , 'to':this.selectEmails};
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json'
     })
