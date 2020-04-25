@@ -7,7 +7,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSelectModule } from 'ngx-select-ex';
-
+import {MatButtonModule} from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 
@@ -23,7 +23,8 @@ import { AppComponent } from './app.component';
     MatSelectModule,
     MatInputModule,
     NoopAnimationsModule,
-    NgxSelectModule
+    NgxSelectModule,
+    MatButtonModule
   ],
 
   providers: [],

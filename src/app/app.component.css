@@ -1,9 +1,20 @@
-/*.ngx-select__selected{*/
-/*  width: auto;*/
-/*}*/
-.place, .attraction, .email, .templates{
+.head{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
   width: fit-content;
-  margin: 1em;
+  border-style: solid;
+  padding: 2em;
+  border-radius: 14px;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.place, .attraction, .email, .templates, .send-button{
+  width: fit-content;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .template {
@@ -39,7 +50,7 @@
   display: inline-block;
   font-size: small;
   color: white;
-  padding: 0.8em 0.7em 0 0.7em;
+  padding: 0.5em 0.7em 0 0.7em;
   background-color:#405061;
   line-height: 1em;
   position: relative;
@@ -52,4 +63,13 @@
 
 .text{
   position: absolute;
+}
+
+h3{
+  text-align: center;
+}
+
+button{
+  border: solid .5px;
+  border-radius: 6px;
 }

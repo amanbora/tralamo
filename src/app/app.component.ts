@@ -26,7 +26,7 @@ export class AppComponent implements OnInit{
   private selectPlace = '';
   private selectAttraction = '';
   private selectEmails:Array<string>=[];
-  private selectTemplate = '';
+  public selectTemplate = '';
 
 
   public selectedPlace(value:any):void {
