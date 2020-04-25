@@ -38,48 +38,54 @@
 <!--  </div>-->
 <!--</div>-->
 
-
-<ngx-select
-  [allowClear]="true"
-  [items]="names"
-  (select) = "selectedPlace($event)"
-  optionValueField="optionId"
-  optionTextField="optionTitle"
-  placeholder="Select...">
-</ngx-select>
-
-
-<ngx-select
-  *ngIf="showAttractionList"
-  [allowClear]="true"
-  [items]="attractions"
-  (select) = "selectedAttraction($event)"
-  optionValueField="optionId"
-  optionTextField="optionTitle"
-  placeholder="Select...">
-</ngx-select>
+<div class="place">
+  <ngx-select
+    [allowClear]="true"
+    [items]="names"
+    (select) = "selectedPlace($event)"
+    optionValueField="optionId"
+    optionTextField="optionTitle"
+    placeholder="Select...">
+  </ngx-select>
+</div>
 
 
+<div class="attraction">
+  <ngx-select
+    *ngIf="!showAttractionList"
+    [allowClear]="true"
+    [items]="attractions"
+    (select) = "selectedAttraction($event)"
+    optionValueField="optionId"
+    optionTextField="optionTitle"
+    placeholder="Select...">
+  </ngx-select>
+</div>
 
-<ngx-select
-  *ngIf="showEmailList"
-  [multiple]="true"
-  [allowClear]="true"
-  [items]="emailList"
-  (select) = "selectedEmails($event)"
-  optionValueField="optionId"
-  optionTextField="optionTitle"
-  placeholder="Select...">
-</ngx-select>
 
-<div class="templates" *ngIf="showTemp">
-  <ul>
+
+<div class="email">
+  <ngx-select
+    *ngIf="!showEmailList"
+    [multiple]="true"
+    [allowClear]="true"
+    [items]="emailList"
+    (select) = "selectedEmails($event)"
+    optionValueField="optionId"
+    optionTextField="optionTitle"
+    placeholder="Select...">
+  </ngx-select>
+</div>
+
+
+<!--<div class="templates" *ngIf="!showTemp">-->
+  <ul class="template">
     <li *ngFor="let temp of templates" (click)="onSelectTemplate(temp.id)">
-      <span>{{temp.id}}</span>
-      {{temp.text}}
+      <span class="badge">{{temp.id}}</span>
+      <span class="text">{{temp.text}}</span>
     </li>
   </ul>
-</div>
+<!--</div>-->
 
 <div class="send-button" *ngIf="sendActivated">
   <button (click)="sendEmail()">SEND</button>
